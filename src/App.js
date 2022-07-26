@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import tw, { styled } from "twin.macro";
 
-function App() {
+const Title = styled.h1`
+  ${tw`text-indigo-500`}
+`;
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title className="font-bold text-7xl">App </Title>
     </div>
   );
-}
+};
 
 export default App;
