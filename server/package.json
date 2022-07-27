@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Spotify clone server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abifauzan/152235865101254-dts-final-project.git"
+  },
+  "author": "@abifauzan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abifauzan/152235865101254-dts-final-project/issues"
+  },
+  "homepage": "https://github.com/abifauzan/152235865101254-dts-final-project#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "lyrics-finder": "^21.7.0",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}
