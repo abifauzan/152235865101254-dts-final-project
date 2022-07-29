@@ -4,15 +4,31 @@ import PokemonCollection from "./pages/pokemon-collection";
 import HomePage from "./pages/home";
 import LoginPage from "./pages/login";
 import NotFoundPage from "./pages/not-found";
+import PrivateRoute from "./configs/privateRoute";
 
 const RoutePage = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} exact />
-      <Route path="/pokemon/:name" element={<PokemonDetail />} exact />
-      <Route path="/my-pokemon" element={<PokemonCollection />} exact />
+      <Route path="/" element={<HomePage />} />
 
-      <Route path="login" element={<LoginPage />} />
+      <Route
+        path="/my-pokemon"
+        element={
+          <PrivateRoute>
+            <PokemonCollection />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/pokemon/:name"
+        element={
+          <PrivateRoute>
+            <PokemonDetail />
+          </PrivateRoute>
+        }
+      />
+
+      <Route path="/auth" element={<LoginPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

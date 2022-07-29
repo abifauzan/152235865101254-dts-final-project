@@ -10,11 +10,11 @@ const API_KEY = process.env.REACT_APP_FIREBASE_KEY;
 
 const firebaseConfig = {
   apiKey: API_KEY,
-  authDomain: "pair-94-dts-mini-project.firebaseapp.com",
-  projectId: "pair-94-dts-mini-project",
-  storageBucket: "pair-94-dts-mini-project.appspot.com",
-  messagingSenderId: "157773305741",
-  appId: "1:157773305741:web:cdb49b9437e098c4c34fc4",
+  authDomain: "pokedex-pokemon-43455.firebaseapp.com",
+  projectId: "pokedex-pokemon-43455",
+  storageBucket: "pokedex-pokemon-43455.appspot.com",
+  messagingSenderId: "394721429154",
+  appId: "1:394721429154:web:ea40e9fce0494dce68b9fb",
   measurementId: "G-64PS6K9B75",
 };
 
