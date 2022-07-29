@@ -105,6 +105,7 @@ const PokemonFeature = () => {
         {mounted ? (
           <ItemDesktopFirst
             animate={mounted ? "open" : "close"}
+            whileHover={{ scale: 1.05 }}
             initial="close"
             variants={variants.desktop}
             pokemontype={pokemonType0}
@@ -140,6 +141,7 @@ const PokemonFeature = () => {
                   key={data[index].id}
                   animate={mounted ? "open" : "close"}
                   initial="close"
+                  whileHover={{ scale: 1.05 }}
                   variants={variants.desktop}
                   onClick={() => navigate(`/pokemon/${data[index].name}`)}
                 >

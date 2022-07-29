@@ -148,7 +148,7 @@ export const ItemDesc = styled.div`
   }
 `;
 
-export const DesktopView = styled.div`
+export const DesktopView = styled(motion.div)`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
