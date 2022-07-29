@@ -18,25 +18,27 @@ const Dashboard = ({ children }) => {
   const [playingTrack, setPlayingTrack] = useState();
   const [lyrics, setLyrics] = useState("");
 
-  useEffect(() => {
-    if (!playingTrack) return;
-    (async () => {
-      const {
-        data: { lyrics },
-      } = await axios.get(`${process.env.REACT_APP_BASE_URL}/lyrics`, {
-        params: {
-          track: playingTrack.title,
-          artist: playingTrack.artist,
-        },
-      });
-      setLyrics(lyrics);
-    })();
-  }, [playingTrack]);
+  console.log("accessToken", accessToken);
 
-  useEffect(() => {
-    if (!accessToken) return;
-    spotifyApi.setAccessToken(accessToken);
-  }, [accessToken]);
+  // useEffect(() => {
+  //   if (!playingTrack) return;
+  //   (async () => {
+  //     const {
+  //       data: { lyrics },
+  //     } = await axios.get(`${process.env.REACT_APP_BASE_URL}/lyrics`, {
+  //       params: {
+  //         track: playingTrack.title,
+  //         artist: playingTrack.artist,
+  //       },
+  //     });
+  //     setLyrics(lyrics);
+  //   })();
+  // }, [playingTrack]);
+
+  // useEffect(() => {
+  //   if (!accessToken) return;
+  //   spotifyApi.setAccessToken(accessToken);
+  // }, [accessToken]);
 
   return (
     <main>

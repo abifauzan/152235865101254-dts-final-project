@@ -13,9 +13,17 @@ const useAuth = (code) => {
     try {
       const {
         data: { access_token, refresh_token, expires_in },
-      } = await axios.post(`${process.env.REACT_APP_BASE_URL}/login`, {
-        code,
-      });
+      } = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/login`,
+        {
+          code,
+        }
+        // {
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        // }
+      );
 
       setAccessToken(access_token);
       setRefreshToken(refresh_token);

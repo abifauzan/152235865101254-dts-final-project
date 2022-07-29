@@ -4,17 +4,16 @@ import Spotify from "./Spotify";
 import GlobalStyles from "./styles/GlobalStyles";
 import { Navigate, Outlet, useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
+import useAuth from "./hooks/useAuth";
 
 const App = () => {
   const [searchParams] = useSearchParams();
-
-  console.log("searchParams", searchParams.get("code"));
 
   const token = useMemo(() => {
     return searchParams.get("code");
   }, [searchParams]);
 
-  if (token === null) return <Navigate to="/login" />;
+  // if (token === null) return <Navigate to="/login" />;
 
   return (
     <main className="App">
