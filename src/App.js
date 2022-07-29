@@ -1,29 +1,31 @@
-import tw, { styled } from "twin.macro";
-import SpotifyDetail from "./SpotifyDetail";
-import Spotify from "./Spotify";
+import React, { useMemo } from "react";
+import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
-import { Navigate, Outlet, useSearchParams } from "react-router-dom";
-import { useMemo } from "react";
-import useAuth from "./hooks/useAuth";
+import { Theme } from "./styles/Theme";
+import { useThemeMode } from "./hooks/useThemeMode";
+import { AppProvider } from "./contexts/AppContext";
+import Router from "./Route";
+import Layout from "./components/Layouts";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
-  const [searchParams] = useSearchParams();
+  const [theme, isMounted] = useThemeMode();
 
-  const token = useMemo(() => {
-    return searchParams.get("code");
-  }, [searchParams]);
+  const themeMode = useMemo(() => (theme === "light" ? Theme.light : Theme.dark), [theme]);
 
-  // if (token === null) return <Navigate to="/login" />;
+  if (!isMounted) return <div />;
 
   return (
-    <main className="App">
-      <GlobalStyles />
-      <h1>Header</h1>
-      {/* <Spotify /> */}
-      {/* <SpotifyDetail /> */}
-
-      <Outlet context={{ token }} />
-    </main>
+    <AppProvider>
+      <ThemeProvider theme={themeMode}>
+        <BrowserRouter>
+          <Layout>
+            <GlobalStyles />
+            <Router />
+          </Layout>
+        </BrowserRouter>
+      </ThemeProvider>
+    </AppProvider>
   );
 };
 

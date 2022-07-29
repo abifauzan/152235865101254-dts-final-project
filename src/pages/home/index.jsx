@@ -1,9 +1,12 @@
-import Dashboard from "../../containers/Dashboard";
+import React from "react";
+import PokemonFeature from "../../components/PokemonFeature";
+import PokemonList from "../../components/PokemonList";
 
 const Home = () => (
-  <Dashboard>
-    <h1> Home Page</h1>
-  </Dashboard>
+  <>
+    <PokemonFeature />
+    <PokemonList />
+  </>
 );
 
 export default Home;
