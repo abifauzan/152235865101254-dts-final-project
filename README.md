@@ -2,7 +2,7 @@
 
 Pokemon Web using pokeapi.co
 
-- [Demo Here](https://6130d79493e16ec6794ff5a0--elated-mcclintock-36039f.netlify.app/)
+- [Demo Here](https://152235865101254-dts-final-project.netlify.app/)
 
 ## Description
 
