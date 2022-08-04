@@ -36,8 +36,8 @@ export const Item = styled(Link)`
   }
 
   svg {
-    width: 27px;
-    height: 27px;
+    width: 40px;
+    height: 40px;
     padding: 7px;
     border-radius: 9999px;
   }

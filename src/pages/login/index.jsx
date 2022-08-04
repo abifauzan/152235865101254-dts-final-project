@@ -1,13 +1,61 @@
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, provider, signInWithPopup } from "../../configs/firebase";
+
+const defaultValue = {
+  email: "",
+  password: "",
+};
 
 const Auth = () => {
   const [mode, setMode] = useState("login");
+  const [input, setInput] = useState(defaultValue);
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const { state = {} } = useLocation();
 
   const toggleMode = () => {
     const value = mode === "login" ? "register" : "login";
     setMode(value);
   };
+
+  // Handling on change input
+  const handleInputChange = (value, type) => {
+    setInput({
+      ...input,
+      [type]: value,
+    });
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // Handling submit button
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      setLoading(true);
+      const sendLoginData = await signInWithEmailAndPassword(auth, input.email, input.password);
+      console.log("sendLoginData", sendLoginData);
+      navigate(state?.from || "/");
+    } catch (error) {
+      console.log("error", error);
+      // setErrorMessage(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <main className="w-full h-[calc(100vh-100px)] overflow-hidden">
       <div className="container mx-auto px-4 h-full">
@@ -26,6 +74,7 @@ const Auth = () => {
                       className="bg-white active:bg-gray-100 text-gray-800 px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
                       type="button"
                       style={{ transition: "all .15s ease" }}
+                      onClick={() => signInWithGoogle()}
                     >
                       <FcGoogle className="w-5 mr-1" />
                       Google
@@ -40,7 +89,7 @@ const Auth = () => {
                     {mode === "login" ? "Or sign in with credentials" : "Sign up with credentials"}
                   </small>
                 </div>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-gray-700 text-xs font-bold mb-2"
@@ -53,6 +102,7 @@ const Auth = () => {
                       className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                       placeholder="Email"
                       style={{ transition: "all .15s ease" }}
+                      onChange={(event) => handleInputChange(event.target.value, "email")}
                     />
                   </div>
 
@@ -68,15 +118,17 @@ const Auth = () => {
                       className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                       placeholder="Password"
                       style={{ transition: "all .15s ease" }}
+                      onChange={(event) => handleInputChange(event.target.value, "password")}
                     />
                   </div>
 
                   <div className="text-center mt-6">
                     <button
                       className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
-                      type="button"
+                      type="submit"
                       style={{ transition: "all .15s ease" }}
                     >
+                      {loading && "Loading..."}
                       {mode === "login" ? "Sign In" : "Sign Up"}
                     </button>
                   </div>
