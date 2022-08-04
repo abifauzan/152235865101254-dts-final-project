@@ -1,7 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, provider, signInWithPopup } from "../../configs/firebase";
 
 const defaultValue = {
@@ -45,7 +45,9 @@ const Auth = () => {
 
     try {
       setLoading(true);
-      const sendLoginData = await signInWithEmailAndPassword(auth, input.email, input.password);
+      const authApi =
+        mode === "login" ? signInWithEmailAndPassword : createUserWithEmailAndPassword;
+      const sendLoginData = await authApi(auth, input.email, input.password);
       console.log("sendLoginData", sendLoginData);
       navigate(state?.from || "/");
     } catch (error) {
