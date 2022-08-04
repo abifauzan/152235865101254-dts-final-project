@@ -1,15 +1,40 @@
-# DTS Final Project
+# Project Title
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/1tIJWFEUr2NU8FZSxAA1IPi7ZYVn1jBDp6IdFUZjempg/edit?usp=sharing).
+Pokemon Web using pokeapi.co
 
-## Fork and Clone
+- [Demo Here](https://6130d79493e16ec6794ff5a0--elated-mcclintock-36039f.netlify.app/)
 
-Mohon peserta bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
+## Description
 
-`[nomor peserta tanpa strip]-dts-final-project`
+Website about displaying All Pokemons including legendary pokemon and simulating cathing them based on 50% chance.
 
-Contoh: `1512345678001-dts-final-project`
+## Getting Started
 
-## Branching, commit
+### Dependencies
 
-Branch dapat sesuai dengan kebutuhan mandiri, namun hasil akhirnya harus di merge ke branch `main`.
+- react-router-dom
+- axios
+- framer-motion
+- react-icons
+- react-infinite-scroll-component
+- styled-components
+- swiper
+- firebase authentication
+
+### Installing
+
+- Install by using npm install
+
+### Executing program
+
+- Execute the app by using
+
+```
+npm start
+```
+
+## Acknowledgments
+
+Inspiration Design
+
+- [dribbble](https://www.dribbble.com)
